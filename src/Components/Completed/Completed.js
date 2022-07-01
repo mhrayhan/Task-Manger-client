@@ -10,7 +10,7 @@ const Completed = () => {
   }, [completedTask])
 
   return (
-    <div className="w-[35%] mt-5 mx-auto shadow-lg">
+    <div className="mx-2 lg:w-[35%] mt-5 mx-auto shadow-lg">
       <h2 className="text-xl font-serif font-semibold bg-primary py-2 text-white">Completed Task </h2>
       <div className="grid grid-cols-1 divide-y text-left p-2">
         {

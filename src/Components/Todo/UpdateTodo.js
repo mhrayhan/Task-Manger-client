@@ -39,7 +39,7 @@ const UpdateTodo = () => {
 
   return (
     <div>
-      <div className='w-[35%] mx-auto mt-5'>
+      <div className='mx-2 lg:w-[35%] lg:mx-auto mt-5'>
         <div className="form-control ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className="input-group w-full">

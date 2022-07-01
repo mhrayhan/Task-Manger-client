@@ -75,8 +75,8 @@ const Todo = () => {
   // }
 
   return (
-    <div className="pb-5">
-      <div className='w-[35%] mx-auto mt-5'>
+    <div className="mx-2 lg:pb-5">
+      <div className='lg:w-[35%] mx-auto mt-5'>
         <div className="form-control ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className="input-group w-full">
@@ -87,7 +87,7 @@ const Todo = () => {
         </div>
       </div>
 
-      <div className="w-[35%] mt-5 mx-auto shadow-xl">
+      <div className="lg:w-[35%] mt-5 mx-auto shadow-xl">
         <h2 className="text-xl font-serif font-semibold bg-primary py-2 text-white">Task List</h2>
         <div className="grid grid-cols-1 divide-y text-left ">
           {
