@@ -11,7 +11,7 @@ const Todo = () => {
 
   const handleChange = e => {
     console.log(e);
-    const url = 'http://localhost:5000/completed'
+    const url = 'https://flannel-parliament-48417.herokuapp.com/completed'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -29,7 +29,7 @@ const Todo = () => {
 
   const handleDelete = id => {
     console.log(id);
-    const deleteUrl = `http://localhost:5000/todo/${id}`;
+    const deleteUrl = `https://flannel-parliament-48417.herokuapp.com/todo/${id}`;
     fetch(deleteUrl, {
       method: 'DELETE'
     })
@@ -44,7 +44,7 @@ const Todo = () => {
 
   const onSubmit = data => {
     console.log(data);
-    const url = 'http://localhost:5000/todo'
+    const url = 'https://flannel-parliament-48417.herokuapp.com/todo'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -63,15 +63,20 @@ const Todo = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:5000/todo')
+    fetch('https://flannel-parliament-48417.herokuapp.com/todo')
       .then(res => res.json())
       .then(data => setTodos(data))
   }, [todos])
 
+  // const navigate = useNavigate()
+
+  // const handleNavigate = e => {
+  //   navigate(`/todo/:${e}`)
+  // }
 
   return (
-    <div >
-      <div className='w-1/4 mx-auto mt-5'>
+    <div className="pb-5">
+      <div className='w-[35%] mx-auto mt-5'>
         <div className="form-control ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className="input-group w-full">
@@ -82,8 +87,8 @@ const Todo = () => {
         </div>
       </div>
 
-      <div className="w-[35%] mt-5 mx-auto shadow-md">
-        <h2 className="text-2xl font-semibold bg-primary py-2 text-white">Task List</h2>
+      <div className="w-[35%] mt-5 mx-auto shadow-xl">
+        <h2 className="text-xl font-serif font-semibold bg-primary py-2 text-white">Task List</h2>
         <div className="grid grid-cols-1 divide-y text-left ">
           {
             todos.map(todoo => <TodoList

@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import Todo from '../Todo/Todo';
 
 const Home = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Todo></Todo>
     </div>
   );
 };

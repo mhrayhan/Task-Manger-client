@@ -4,7 +4,7 @@ const useTodo = () => {
   const [todos, setTodos] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:5000/todo')
+    fetch('https://flannel-parliament-48417.herokuapp.com/todo')
       .then(res => res.json())
       .then(data => setTodos(data))
   }, [])
