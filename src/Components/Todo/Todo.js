@@ -68,11 +68,6 @@ const Todo = () => {
       .then(data => setTodos(data))
   }, [todos])
 
-  // const navigate = useNavigate()
-
-  // const handleNavigate = e => {
-  //   navigate(`/todo/:${e}`)
-  // }
 
   return (
     <div className="mx-2 lg:pb-5">
@@ -95,6 +90,7 @@ const Todo = () => {
               key={todoo._id}
               todoo={todoo}
               handleChange={handleChange}
+              handleDelete={handleDelete}
             ></TodoList>)
           }
         </div>
