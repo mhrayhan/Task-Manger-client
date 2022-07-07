@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import TodoDeleteModal from './TodoDeleteModal';
 
 const TodoList = ({ todoo, handleChange, setTodoDelete }) => {
   const { todo, _id } = todoo;

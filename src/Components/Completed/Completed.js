@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CompletedList from './CompletedList';
+import CompletedTodoDeleteModal from './CompletedTodoDeleteModal';
 
 const Completed = () => {
   const [completedTask, setCompletedTask] = useState([]);
+
+  const [completeTodoDelete, setCompleteTodoDelete] = useState(null);
 
   useEffect(() => {
     fetch('https://flannel-parliament-48417.herokuapp.com/completed')
@@ -10,19 +13,7 @@ const Completed = () => {
       .then(data => setCompletedTask(data))
   }, [completedTask])
 
-  const handleCompleteDelete = id => {
-    console.log(id);
-    const url = `https://flannel-parliament-48417.herokuapp.com/completed/${id}`;
-    fetch(url, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(result => {
-        console.log(result);
-        // const remaining = completedTask.filter(item => item._id !== id);
-        // setCompletedTask(remaining)
-      })
-  }
+
 
   return (
     <div className="mx-2 lg:w-[35%] mt-5 lg:mx-auto shadow-lg">
@@ -31,10 +22,11 @@ const Completed = () => {
         {
           completedTask.map(todoo => <CompletedList key={todoo._id}
             todoo={todoo}
-            handleCompleteDelete={handleCompleteDelete}
+            setCompleteTodoDelete={setCompleteTodoDelete}
           ></CompletedList>)
         }
       </div>
+      {completeTodoDelete && <CompletedTodoDeleteModal completeTodoDelete={completeTodoDelete}></CompletedTodoDeleteModal>}
     </div>
   );
 };
