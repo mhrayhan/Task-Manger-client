@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import CustomLink from '../CustomLink/CustomLink';
 
 const Navbar = () => {
   return (
     <div className='mt-3'>
-      <ul className="menu menu-vertical menu-horizontal bg-yellow-400 font-serif text-white font-semibold rounded-box">
-        <li><Link to='/todo'>ToDo</Link></li>
-        <li><Link to='completed'>Completed</Link></li>
-        <li><Link to='calender'>Calender</Link></li>
+      <ul className="menu menu-vertical py-3 px-3 menu-horizontal font-serif shadow-lg border rounded-box">
+        <><CustomLink className=' py-2 mx-2' to='/todo'>ToDo</CustomLink></>
+        <><CustomLink className=' py-2 mx-2' to='completed'>Completed</CustomLink></>
+        <><CustomLink className=' py-2 mx-2' to='calender'>Calender</CustomLink></>
       </ul>
     </div>
   );

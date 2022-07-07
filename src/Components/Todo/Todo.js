@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import TodoDeleteModal from "./TodoDeleteModal";
 import TodoList from "./TodoList";
 
 
@@ -8,16 +9,20 @@ const Todo = () => {
 
   const [todos, setTodos] = useState([]);
 
+  const [todoDelete, setTodoDelete] = useState(null);
 
+  /* https://flannel-parliament-48417.{rayhan}herokuapp.com */
   const handleChange = e => {
-    console.log(e);
+    const completeTodo = {
+      todo: e.todo
+    }
     const url = 'https://flannel-parliament-48417.herokuapp.com/completed'
     fetch(url, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(e)
+      body: JSON.stringify(completeTodo)
     })
       .then(res => res.json())
       .then(result => {
@@ -35,8 +40,7 @@ const Todo = () => {
     })
       .then(res => res.json())
       .then(result => {
-        const remaining = todos.filter(item => item._id !== id);
-        setTodos(remaining)
+
       })
   }
 
@@ -91,10 +95,12 @@ const Todo = () => {
               todoo={todoo}
               handleChange={handleChange}
               handleDelete={handleDelete}
+              setTodoDelete={setTodoDelete}
             ></TodoList>)
           }
         </div>
       </div>
+      {todoDelete && <TodoDeleteModal todoDelete={todoDelete}></TodoDeleteModal>}
     </div>
   );
 };
