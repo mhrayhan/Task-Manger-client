@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
 import { Slide, toast } from 'react-toastify';
 
-const UpdateTodo = () => {
+const UpdateModal = ({ openModal }) => {
+  const { _id } = openModal;
+  let id = _id;
   const { register, handleSubmit, reset } = useForm();
-
-  const { id } = useParams();
 
   const [task, setTask] = useState({})
 
@@ -42,25 +41,27 @@ const UpdateTodo = () => {
         reset()
       })
   }
-
-
-
   return (
     <div>
-      <div className='mx-2 lg:w-[35%] lg:mx-auto mt-5'>
-        <div className="form-control ">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label className="input-group w-full">
-              <input type="text" placeholder="Type here" className="input input-bordered w-full" {...register("todo")} />
-              <input type="submit" className='btn btn-primary text-white font-semibold' value='UPDATE' />
-            </label>
-          </form>
+      <input type="checkbox" id="update-modal" class="modal-toggle" />
+      <div class="modal">
+        <div class="modal-box relative">
+          <label for="update-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <div className='mx-2 lg:w-[95%] lg:mx-auto mt-5'>
+            <div className="form-control ">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <label className="input-group w-full">
+                  <input type="text" placeholder="Type here" className="input input-bordered w-full" {...register("todo")} />
+                  <input type="submit" className='btn btn-primary text-white font-semibold' value='UPDATE' />
+                </label>
+              </form>
+            </div>
+            <p className=' w-full mx-auto p-2 border rounded-md mt-5 shadow-md'>{task?.todo}</p>
+          </div>
         </div>
-        <p className=' w-full mx-auto p-2 border rounded-md mt-5 shadow-md'>{task?.todo}</p>
       </div>
     </div>
-
   );
 };
 
-export default UpdateTodo;
+export default UpdateModal;

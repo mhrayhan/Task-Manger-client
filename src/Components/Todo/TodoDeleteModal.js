@@ -1,4 +1,5 @@
 import React from 'react';
+import { Slide, toast } from 'react-toastify';
 
 const TodoDeleteModal = ({ todoDelete }) => {
   const { _id } = todoDelete;
@@ -12,20 +13,24 @@ const TodoDeleteModal = ({ todoDelete }) => {
     })
       .then(res => res.json())
       .then(result => {
-
+        toast.success('Task delete successfully', {
+          autoClose: 1000,
+          transition: Slide,
+          theme: 'dark'
+        })
       })
   }
 
   return (
     <div>
       <div>
-        <input type="checkbox" id="todo-delete-modal" class="modal-toggle" />
-        <div class="modal modal-middle">
-          <div class="modal-box w-[90%] max-w-lg">
-            <h3 class="font-semibold text-center text-lg">Are you sure to delete the task?</h3>
-            <div class="modal-action w-fit mx-auto">
-              <label for="todo-delete-modal" class="btn btn-xs btn-primary ">Cancel</label>
-              <label onClick={() => handleDelete(_id)} for="todo-delete-modal" class="btn btn-xs btn-secondary">Delete</label>
+        <input type="checkbox" id="todo-delete-modal" className="modal-toggle" />
+        <div className="modal modal-middle">
+          <div className="modal-box w-[90%] max-w-lg">
+            <h3 className="font-semibold text-center text-lg">Are you sure to delete the task?</h3>
+            <div className="modal-action w-fit mx-auto">
+              <label htmlFor="todo-delete-modal" className="btn btn-xs btn-primary ">Cancel</label>
+              <label onClick={() => handleDelete(_id)} htmlFor="todo-delete-modal" className="btn btn-xs btn-secondary">Delete</label>
             </div>
           </div>
         </div>

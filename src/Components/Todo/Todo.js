@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Slide, toast } from "react-toastify";
 import TodoDeleteModal from "./TodoDeleteModal";
 import TodoList from "./TodoList";
+import UpdateModal from "./UpdateModal";
 
 
 const Todo = () => {
@@ -10,6 +12,8 @@ const Todo = () => {
   const [todos, setTodos] = useState([]);
 
   const [todoDelete, setTodoDelete] = useState(null);
+
+  const [openModal, setOpenModal] = useState()
 
   /* https://flannel-parliament-48417.{rayhan}herokuapp.com */
   const handleChange = e => {
@@ -28,6 +32,10 @@ const Todo = () => {
       .then(result => {
         if (result.insertedId) {
           handleDelete(e._id);
+          toast.success('Task completed', {
+            autoClose: 1000,
+            transition: Slide
+          })
         }
       })
   }
@@ -59,7 +67,11 @@ const Todo = () => {
       .then(res => res.json())
       .then(result => {
         if (result.insertedId) {
-
+          toast.success('Task Added', {
+            autoClose: 1000,
+            transition: Slide,
+            theme: 'dark'
+          })
         }
       })
     reset();
@@ -96,11 +108,13 @@ const Todo = () => {
               handleChange={handleChange}
               handleDelete={handleDelete}
               setTodoDelete={setTodoDelete}
+              setOpenModal={setOpenModal}
             ></TodoList>)
           }
         </div>
       </div>
       {todoDelete && <TodoDeleteModal todoDelete={todoDelete}></TodoDeleteModal>}
+      {openModal && <UpdateModal openModal={openModal}></UpdateModal>}
     </div>
   );
 };
