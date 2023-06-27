@@ -14,7 +14,7 @@ const TodoDeleteModal = ({ todoDelete }) => {
       .then(res => res.json())
       .then(result => {
         toast.success('Task delete successfully', {
-          autoClose: 1000,
+          autoClose: 500,
           transition: Slide,
           theme: 'dark'
         })
