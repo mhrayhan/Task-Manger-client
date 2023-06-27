@@ -8,7 +8,7 @@ const Completed = () => {
   const [completeTodoDelete, setCompleteTodoDelete] = useState(null);
 
   useEffect(() => {
-    fetch('https://flannel-parliament-48417.herokuapp.com/completed')
+    fetch('https://task-manager-server-rose.vercel.app/completed')
       .then(res => res.json())
       .then(data => setCompletedTask(data))
   }, [completedTask])

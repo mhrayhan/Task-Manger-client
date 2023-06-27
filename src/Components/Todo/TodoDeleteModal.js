@@ -7,7 +7,7 @@ const TodoDeleteModal = ({ todoDelete }) => {
 
   const handleDelete = id => {
     console.log(id);
-    const deleteUrl = `https://flannel-parliament-48417.herokuapp.com/todo/${id}`;
+    const deleteUrl = `https://task-manager-server-rose.vercel.app/todo/${id}`;
     fetch(deleteUrl, {
       method: 'DELETE'
     })
@@ -29,8 +29,8 @@ const TodoDeleteModal = ({ todoDelete }) => {
           <div className="modal-box w-[90%] max-w-lg">
             <h3 className="font-semibold text-center text-lg">Are you sure to delete the task?</h3>
             <div className="modal-action w-fit mx-auto">
-              <label htmlFor="todo-delete-modal" className="btn btn-xs btn-primary ">Cancel</label>
-              <label onClick={() => handleDelete(_id)} htmlFor="todo-delete-modal" className="btn btn-xs btn-secondary">Delete</label>
+              <label htmlFor="todo-delete-modal" className="btn btn-sm btn-primary ">Cancel</label>
+              <label onClick={() => handleDelete(_id)} htmlFor="todo-delete-modal" className="btn btn-sm btn-secondary">Delete</label>
             </div>
           </div>
         </div>

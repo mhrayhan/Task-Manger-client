@@ -6,7 +6,7 @@ const CompletedTodoDeleteModal = ({ completeTodoDelete }) => {
 
   const handleCompleteDelete = id => {
     console.log(id);
-    const url = `https://flannel-parliament-48417.herokuapp.com/completed/${id}`;
+    const url = `https://task-manager-server-rose.vercel.app/completed/${id}`;
     fetch(url, {
       method: 'DELETE'
     })
@@ -31,8 +31,8 @@ const CompletedTodoDeleteModal = ({ completeTodoDelete }) => {
           <div className="modal-box w-[90%] max-w-lg">
             <h3 className="font-semibold text-center text-lg">Are you sure to delete the task?</h3>
             <div className="modal-action w-fit mx-auto">
-              <label htmlFor="completeTodo-delete-modal" className="btn btn-xs btn-primary ">Cancel</label>
-              <label onClick={() => handleCompleteDelete(_id)} htmlFor="completeTodo-delete-modal" className="btn btn-xs btn-secondary">Delete</label>
+              <label htmlFor="completeTodo-delete-modal" className="btn btn-sm btn-primary ">Cancel</label>
+              <label onClick={() => handleCompleteDelete(_id)} htmlFor="completeTodo-delete-modal" className="btn btn-sm btn-secondary">Delete</label>
             </div>
           </div>
         </div>

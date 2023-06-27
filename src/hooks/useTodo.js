@@ -4,7 +4,7 @@ const useTodo = () => {
   const [todos, setTodos] = useState({});
 
   useEffect(() => {
-    fetch('https://flannel-parliament-48417.herokuapp.com/todo')
+    fetch('https://task-manager-server-rose.vercel.app/todo')
       .then(res => res.json())
       .then(data => setTodos(data))
   }, [])

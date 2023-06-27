@@ -20,7 +20,7 @@ const Todo = () => {
     const completeTodo = {
       todo: e.todo
     }
-    const url = 'https://flannel-parliament-48417.herokuapp.com/completed'
+    const url = 'https://task-manager-server-rose.vercel.app/completed'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -42,7 +42,7 @@ const Todo = () => {
 
   const handleDelete = id => {
     console.log(id);
-    const deleteUrl = `https://flannel-parliament-48417.herokuapp.com/todo/${id}`;
+    const deleteUrl = `https://task-manager-server-rose.vercel.app/todo/${id}`;
     fetch(deleteUrl, {
       method: 'DELETE'
     })
@@ -56,7 +56,7 @@ const Todo = () => {
 
   const onSubmit = data => {
     console.log(data);
-    const url = 'https://flannel-parliament-48417.herokuapp.com/todo'
+    const url = 'https://task-manager-server-rose.vercel.app/todo'
     fetch(url, {
       method: 'POST',
       headers: {
@@ -79,12 +79,12 @@ const Todo = () => {
   }
 
   useEffect(() => {
-    fetch('https://flannel-parliament-48417.herokuapp.com/todo')
+    fetch('https://task-manager-server-rose.vercel.app/todo')
       .then(res => res.json())
       .then(data => setTodos(data))
   }, [todos])
 
-
+  const reversedTodo = [...todos].reverse();
   return (
     <div className="mx-2 lg:pb-5">
       <div className='lg:w-[35%] mx-auto mt-5'>
@@ -100,9 +100,9 @@ const Todo = () => {
 
       <div className="lg:w-[35%] mt-5 mx-auto shadow-xl">
         <h2 className="text-xl font-serif font-semibold bg-primary py-2 text-white">Task List</h2>
-        <div className="grid grid-cols-1 divide-y text-left ">
+        <div className="grid grid-cols-1 divide-y text-left mx-2">
           {
-            todos.map(todoo => <TodoList
+            reversedTodo.map(todoo => <TodoList
               key={todoo._id}
               todoo={todoo}
               handleChange={handleChange}
@@ -114,7 +114,7 @@ const Todo = () => {
         </div>
       </div>
       {todoDelete && <TodoDeleteModal todoDelete={todoDelete}></TodoDeleteModal>}
-      {openModal && <UpdateModal openModal={openModal}></UpdateModal>}
+      {openModal && <UpdateModal openModal={openModal} setOpenModal={setOpenModal}></UpdateModal>}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const UpdateTodo = () => {
   const [task, setTask] = useState({})
 
   useEffect(() => {
-    const url = `https://flannel-parliament-48417.herokuapp.com/todo/${id}`
+    const url = `https://task-manager-server-rose.vercel.app/todo/${id}`
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -23,7 +23,7 @@ const UpdateTodo = () => {
     console.log(data.todo);
     setTask(data)
     const updateTodo = data;
-    const url = `https://flannel-parliament-48417.herokuapp.com/todo/${id}`;
+    const url = `https://task-manager-server-rose.vercel.app/todo/${id}`;
     fetch(url, {
       method: 'PUT',
       headers: {
