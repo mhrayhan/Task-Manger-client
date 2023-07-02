@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Slide, toast } from 'react-toastify';
 
 const UpdateModal = ({ openModal, setOpenModal }) => {
-  const { _id, todo } = openModal;
+  const { _id } = openModal;
   const { register, handleSubmit, reset } = useForm();
 
   const [task, setTask] = useState({})
